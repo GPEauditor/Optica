@@ -1,0 +1,345 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset Básico y Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f2f5; /* Fondo blanco-gris muy suave */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilos de Encabezado */
+.header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img {
+    max-width: 250px; /* Ajusta este tamaño si es necesario */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.slogan {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    color: #555;
+    margin-top: 0;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos de Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn-whatsapp {
+    background-color: #25D366; /* Verde WhatsApp */
+    color: white;
+    box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+}
+
+.btn-whatsapp:hover {
+    background-color: #1DA851;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #004d66; /* Azul oscuro del logo */
+    color: white;
+    border-radius: 5px; /* Menos redondeado para botones de producto */
+    font-size: 0.9em;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #003340;
+    transform: translateY(-2px);
+}
+
+/* Iconos en botones */
+.btn i {
+    margin-right: 8px;
+}
+
+/* Secciones Generales */
+section {
+    padding: 60px 0;
+    margin-bottom: 30px;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    color: #004d66; /* Azul oscuro */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Sección Hero */
+.hero {
+    background: linear-gradient(135deg, #e0f2f7 0%, #ffffff 100%); /* Degradado suave */
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.05);
+}
+
+.hero p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: #444;
+}
+
+/* Sección de Productos */
+.products-section {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: #fcfcfc;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.product-card-content {
+    padding: 25px;
+}
+
+.product-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    color: #004d66;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.product-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.cta-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+.cta-bottom p {
+    font-size: 1.2em;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+
+/* Sección de Contacto (Formulario Google Sheets) */
+.contact-section {
+    background-color: #e0f2f7; /* Fondo similar al hero para coherencia */
+    padding: 60px 0;
+    margin-bottom: 0; /* No margin-bottom en la última sección antes del footer */
+}
+
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.form-wrapper iframe {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.or-whatsapp {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #222; /* Un gris oscuro */
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.9em;
+}
+
+.footer p {
+    margin: 0 0 15px 0;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5em;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #004d66; /* Azul oscuro del logo */
+}
+
+.privacy-note {
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: #bbb;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .hero p {
+        font-size: 1.1em;
+    }
+    .slogan {
+        font-size: 1.1em;
+    }
+    .logo-img {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    section {
+        padding: 40px 0;
+    }
+    .hero {
+        padding: 60px 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+    .product-grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .product-card-content {
+        padding: 20px;
+    }
+    .product-card h3 {
+        font-size: 1.4em;
+    }
+    .form-wrapper {
+        padding: 20px;
+    }
+    .form-wrapper iframe {
+        height: 600px; /* Ajuste para móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        max-width: 180px;
+    }
+    .slogan {
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.6em;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+    .btn {
+        font-size: 0.9em;
+        padding: 10px 18px;
+    }
+    .product-card h3 {
+        font-size: 1.2em;
+    }
+}
