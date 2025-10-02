@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óptica Mary - Fabricantes de Lentes y Monturas</title>
+    <meta name="description" content="En Óptica Mary somos fabricantes. Compra tus lentes y monturas para hombre, mujer y niños. Asesoría personalizada por WhatsApp. Entrega inmediata.">
+    
+    <link rel="stylesheet" href="https://leoptica.com/cdn/shop/t/21/assets/theme.css">
+    
+    <style>
+        :root {
+            --color-primario: #0d2d62; /* Azul oscuro del logo */
+            --color-secundario: #2a75bb; /* Azul claro del logo */
+            --color-acento: #e94c6f; /* Rosado/rojo para ofertas */
+            --color-texto: #333333;
+            --color-blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: var(--color-texto);
+            background-color: var(--color-blanco); /* Fondo general blanco */
+        }
+
+        /* --- Utilidades --- */
+        .section__header { text-align: center; margin-bottom: 30px; }
+        .section__title { color: var(--color-primario); }
+
+        /* --- Header y Navegación --- */
+        .header, .footer { background-color: var(--color-blanco); border-bottom: 1px solid #eee; }
+        .header__logo-image { max-width: 180px !important; }
+        .nav-bar__link { color: var(--color-primario); font-weight: 500; }
+        .nav-bar__link:hover { color: var(--color-secundario); }
+
+        /* --- Hero Banner --- */
+        .hero-banner {
+            position: relative; text-align: center; color: white; height: 60vh; min-height: 450px;
+            display: flex; align-items: center; justify-content: center;
+            background-size: cover; background-position: center;
+        }
+        .hero-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: bold; }
+        .hero-content p { font-size: 1.3rem; margin: 15px 0 25px; }
+        .button, .slideshow__button {
+            background-color: var(--color-secundario); color: var(--color-blanco); border: none;
+            padding: 15px 30px; font-size: 1rem; border-radius: 50px; text-transform: uppercase;
+            font-weight: bold; transition: all 0.3s; cursor: pointer;
+        }
+        .button:hover, .slideshow__button:hover { background-color: var(--color-primario); transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+        /* --- Banner Fabricantes --- */
+        .fabricantes-banner { background-color: var(--color-blanco); text-align: center; padding: 50px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
+        .fabricantes-banner h2 { font-size: 2.2rem; color: var(--color-primario); margin-bottom: 10px; }
+        .fabricantes-banner p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+        /* --- Carrusel Horizontal --- */
+        .scrolling-wrapper { overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .scrolling-wrapper::-webkit-scrollbar { display: none; }
+        .scroll-item {
+            display: inline-block; background-color: var(--color-blanco); color: var(--color-primario);
+            border: 1px solid #ddd; border-radius: 10px; padding: 15px 25px; margin: 0 10px; font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;
+        }
+        
+        /* --- Mapa y Footer --- */
+        .map-container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+        .map-info { flex: 1; min-width: 280px; }
+        .map-iframe { flex: 2; min-width: 280px; }
+        .map-iframe iframe { width: 100%; height: 350px; border:0; border-radius: 10px; }
+        .footer { background-color: var(--color-blanco); border-top: 1px solid #eee; padding-top: 40px; }
+        .footer__title { color: var(--color-primario); font-weight: bold; }
+        .footer__link-item:hover { color: var(--color-secundario); }
+        .footer__payment-logos img { max-height: 40px; margin: 5px; background: white; padding: 5px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .whatsapp-chat { position: fixed; bottom: 25px; right: 25px; z-index: 1000; width: 65px; height: 65px; transition: transform 0.3s; }
+        .whatsapp-chat:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; } .hero-content p { font-size: 1.1rem; }
+            .fabricantes-banner h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body class="template-index">
+
+    <header class="header header--inline" role="banner">
+        <div class="container">
+            <div class="header__inner">
+                <h1 class="header__logo">
+                    <a href="#" class="header__logo-link"><img class="header__logo-image" src="logo_mary.jpg" alt="Óptica Mary"></a>
+                </h1>
+                <nav class="nav-bar">
+                    <div class="nav-bar__inner">
+                        <ul class="nav-bar__linklist list--unstyled">
+                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link">Inicio</a></li>
+                            <li class="nav-bar__item"><a href="#filtros" class="nav-bar__link link">Filtros</a></li>
+                            <li class="nav-bar__item"><a href="#lunas" class="nav-bar__link link">Lunas</a></li>
+                            <li class="nav-bar__item"><a href="https://opticamary.blogspot.com/" class="nav-bar__link link" target="_blank" rel="noopener">Blog</a></li>
+                            <li class="nav-bar__item"><a href="#contacto" class="nav-bar__link link">Contacto</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" role="main">
+        
+        <section class="hero-banner" style="background-image: url('https://images.unsplash.com/photo-1574258483424-f7b53a5e8a11?q=80&w=2070&auto=format&fit=crop');">
+            <div class="hero-content">
+                <h1>Tu Estilo, Tu Visión Perfecta</h1>
+                <p>Descubre monturas únicas que reflejan tu personalidad. Calidad y diseño a tu alcance.</p>
+                <a href="https://api.whatsapp.com/send?phone=51935511702&text=%C2%A1Hola!%20Quisiera%20asesor%C3%ADa%20para%20elegir%20mis%20lentes." class="button" target="_blank" rel="noopener">Pide Asesoría por WhatsApp</a>
+            </div>
+        </section>
+
+        <section class="fabricantes-banner">
+            <div class="container">
+                <h2>Somos Fabricantes Directos</h2>
+                <p>Te garantizamos la mejor calidad y si ya tienes tu medida, ¡la entrega es inmediata!</p>
+            </div>
+        </section>
+        
+        <section id="filtros" class="section">
+            <div class="container">
+                <header class="section__header"><h2 class="section__title heading h3">Nuestros Filtros y Tratamientos</h2></header>
+                <div class="scrolling-wrapper" id="filtros-scroller">
+                    <div class="scroll-item">Antirreflejo</div>
+                    <div class="scroll-item">Filtro de Luz Azul</div>
+                    <div class="scroll-item">Protección UV</div>
+                    <div class="scroll-item">Fotocromático</div>
+                    <div class="scroll-item">Polarizado</div>
+                    <div class="scroll-item">Antirrayas</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lunas" class="section">
+            <div class="container">
+                <header class="section__header"><h2 class="section__title heading h3">Tipos de Lunas</h2></header>
+                <div class="scrolling-wrapper" id="lunas-scroller">
+                    <div class="scroll-item">Resina CR-39</div>
+                    <div class="scroll-item">Policarbonato</div>
+                    <div class="scroll-item">Alto Índice (1.67, 1.74)</div>
+                    <div class="scroll-item">Futurex / Trivex</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <header class="section__header"><h2 class="section__title heading h3">Visita Nuestra Tienda</h2></header>
+                <div class="map-container">
+                    <div class="map-info">
+                        <h3>Óptica Mary - Los Olivos</h3>
+                        <p><strong>Dirección:</strong> Av. Carlos Izaguirre 693, Los Olivos, Lima, Perú</p>
+                        <p><strong>Horario:</strong> Lunes a Sábado de 10:00 am a 7:30 pm</p>
+                        <p>¡Te esperamos!</p>
+                    </div>
+                    <div class="map-iframe">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.435756475653!2d-77.0601833!3d-11.9483324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d15a5f5f5f5f%3A0x6e2f5f5f5f5f5f5f!2sAv.%20Carlos%20Izaguirre%20693%2C%20Los%20Olivos%2015301%2C%20Per%C3%BA!5e0!3m2!1ses-419!2ses!4v1696262000000!5m2!1ses-419!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contacto" class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__wrapper">
+                <div class="footer__block-list">
+                    <div class="footer__block-item footer__block-item--links">
+                        <h2 class="footer__title heading h6">Menú</h2>
+                        <ul class="footer__linklist list--unstyled">
+                            <li><a href="#" class="footer__link-item link">Inicio</a></li>
+                            <li><a href="#filtros" class="footer__link-item link">Filtros</a></li>
+                            <li><a href="#lunas" class="footer__link-item link">Lunas</a></li>
+                            <li><a href="https://opticamary.blogspot.com/" class="footer__link-item link" target="_blank" rel="noopener">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__block-item footer__block-item--text">
+                        <h2 class="footer__title heading h6">Atención al Cliente</h2>
+                        <div class="rte">
+                            <p><strong>WhatsApp 1:</strong> (+51) 935 511 702</p>
+                            <p><strong>WhatsApp 2:</strong> (+51) 935 511 701</p>
+                            <p><strong>Horario:</strong> L-S de 10am a 7:30pm</p>
+                            <p><strong>Email:</strong> contacto@opticamary.com</p>
+                        </div>
+                    </div>
+                    <div class="footer__block-item">
+                         <h2 class="footer__title heading h6">Aceptamos</h2>
+                         <div class="footer__payment-logos">
+                            <img src="https://cdn.worldvectorlogo.com/logos/yape.svg" alt="Yape">
+                            <img src="https://logotipoz.com/wp-content/uploads/2021/10/plin-logo-vector.svg" alt="Plin">
+                            <img src="https://seeklogo.com/images/B/bcp-logo-651E895022-seeklogo.com.png" alt="BCP">
+                            <img src="https://seeklogo.com/images/B/bbva-logo-284734323A-seeklogo.com.png" alt="BBVA">
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #ddd; margin-top: 20px;">
+                <p>© 2025 Óptica Mary. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=51935511702&text=%C2%A1Hola!%20Quisiera%20asesor%C3%ADa%20o%20realizar%20una%20compra." target="_blank" rel="noopener">
+        <img class="whatsapp-chat" src="https://leoptica.com/cdn/shop/files/whatsapp-leoptica.png" alt="Chatea con nosotros en WhatsApp">
+    </a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function autoScroll(elementId, speed = 1) {
+                const scroller = document.getElementById(elementId);
+                if (!scroller) return;
+
+                let isHovering = false;
+                scroller.addEventListener('mouseenter', () => isHovering = true);
+                scroller.addEventListener('mouseleave', () => isHovering = false);
+
+                setInterval(function() {
+                    if (isHovering) return; // Pausa el scroll si el mouse está encima
+                    if (scroller.scrollLeft < (scroller.scrollWidth - scroller.clientWidth)) {
+                        scroller.scrollLeft += speed;
+                    } else {
+                        scroller.scrollLeft = 0; // Vuelve al inicio para un bucle infinito
+                    }
+                }, 40); // Intervalo de tiempo para la suavidad del scroll
+            }
+
+            autoScroll('filtros-scroller');
+            autoScroll('lunas-scroller');
+        });
+    </script>
+
+</body>
+</html>
