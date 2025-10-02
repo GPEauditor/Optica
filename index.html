@@ -6,112 +6,523 @@
     <title>Óptica Mary - Fabricantes de Lentes y Monturas</title>
     <meta name="description" content="En Óptica Mary somos fabricantes. Compra tus lentes y monturas para hombre, mujer y niños. Asesoría personalizada por WhatsApp. Entrega inmediata.">
     
-    <link rel="stylesheet" href="https://leoptica.com/cdn/shop/t/21/assets/theme.css">
-    
     <style>
         :root {
-            --color-primario: #0d2d62; /* Azul oscuro del logo */
-            --color-secundario: #2a75bb; /* Azul claro del logo */
-            --color-acento: #e94c6f; /* Rosado/rojo para ofertas */
+            --color-primario: #0d2d62; 
+            --color-secundario: #2a75bb;
             --color-texto: #333333;
             --color-blanco: #ffffff;
+            --color-gris-claro: #f8f8f8;
+            --color-borde-gris: #eeeeee;
         }
-
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             color: var(--color-texto);
-            background-color: var(--color-blanco); /* Fondo general blanco */
+            background-color: var(--color-blanco);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section { 
+            padding: 15px 0; /* Reducción AÚN MAYOR de padding vertical */
+        }
+        .section__header { 
+            text-align: center; 
+            margin-bottom: 25px; /* Margen inferior reducido */
+        }
+        .section__title { 
+            color: var(--color-primario); 
+            font-size: 1.7rem; 
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        /* SEPARADOR DEGRADADO MÁS SUTIL */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+            border: 0;
+            margin: 10px auto; /* Margen vertical reducido */
+            width: 70%;
         }
 
-        /* --- Utilidades --- */
-        .section__header { text-align: center; margin-bottom: 30px; }
-        .section__title { color: var(--color-primario); }
+        /* HEADER SUPERIOR */
+        .header-top {
+            background-color: var(--color-blanco);
+            border-bottom: 1px solid var(--color-borde-gris);
+            padding: 12px 0; /* Padding reducido */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-top__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header__logo { 
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header__logo-image { 
+            max-width: 140px !important; 
+            height: auto; 
+        }
+        .header__brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .header__brand-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--color-primario);
+            letter-spacing: 1px;
+            margin: 0;
+            line-height: 1.1;
+        }
+        .header__slogan {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--color-secundario);
+            margin: 3px 0 0 0;
+            line-height: 1.1;
+        }
 
-        /* --- Header y Navegación --- */
-        .header, .footer { background-color: var(--color-blanco); border-bottom: 1px solid #eee; }
-        .header__logo-image { max-width: 180px !important; }
-        .nav-bar__link { color: var(--color-primario); font-weight: 500; }
-        .nav-bar__link:hover { color: var(--color-secundario); }
+        /* BUSCADOR ESTILIZADO */
+        .search-form {
+            display: flex;
+            flex-grow: 1;
+            max-width: 450px;
+            margin: 0 20px;
+            border: 2px solid var(--color-secundario);
+            border-radius: 30px;
+            overflow: hidden;
+            background-color: var(--color-blanco);
+            box-shadow: 0 2px 8px rgba(42, 117, 187, 0.1);
+            transition: all 0.3s ease;
+        }
+        .search-form:focus-within {
+            box-shadow: 0 4px 12px rgba(42, 117, 187, 0.2);
+            border-color: var(--color-primario);
+        }
+        .search-input {
+            border: none;
+            padding: 10px 18px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            background-color: transparent;
+            outline: none;
+        }
+        .search-button {
+            background: linear-gradient(135deg, var(--color-secundario), var(--color-primario));
+            color: var(--color-blanco);
+            border: none;
+            padding: 10px 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-button:hover { 
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+        }
+        .search-button svg { 
+            fill: var(--color-blanco); 
+            width: 20px; 
+            height: 20px; 
+        }
 
-        /* --- Hero Banner --- */
+        /* MENÚ DE USUARIO/SESIÓN */
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-actions a {
+            color: var(--color-primario);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .user-actions a:hover { 
+            color: var(--color-blanco);
+            background-color: var(--color-secundario);
+        }
+
+        /* MENÚ DE NAVEGACIÓN PRINCIPAL */
+        .main-nav-bar {
+            background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+            padding: 10px 0; /* Padding reducido */
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+        .main-nav-bar__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .main-nav-bar__item a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+        }
+        .main-nav-bar__item a:hover {
+            background-color: var(--color-blanco);
+            color: var(--color-primario);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* HERO BANNER */
         .hero-banner {
-            position: relative; text-align: center; color: white; height: 60vh; min-height: 450px;
-            display: flex; align-items: center; justify-content: center;
-            background-size: cover; background-position: center;
+            position: relative; 
+            text-align: center; 
+            color: white; 
+            height: 380px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background-size: cover; 
+            background-position: center;
+            animation: slideImages 35s infinite;
         }
-        .hero-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
-        .hero-content h1 { font-size: 3.5rem; font-weight: bold; }
-        .hero-content p { font-size: 1.3rem; margin: 15px 0 25px; }
-        .button, .slideshow__button {
-            background-color: var(--color-secundario); color: var(--color-blanco); border: none;
-            padding: 15px 30px; font-size: 1rem; border-radius: 50px; text-transform: uppercase;
-            font-weight: bold; transition: all 0.3s; cursor: pointer;
+        
+        @keyframes slideImages {
+            0%, 14.28% { background-image: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=1600&q=80'); }
+            14.29%, 28.56% { background-image: url('https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=1600&q=80'); }
+            28.57%, 42.84% { background-image: url('https://images.unsplash.com/photo-1577803645773-f124155b4b3b?w=1600&q=80'); }
+            42.85%, 57.12% { background-image: url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1600&q=80'); }
+            57.13%, 71.40% { background-image: url('https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1600&q=80'); }
+            71.41%, 85.68% { background-image: url('https://images.unsplash.com/photo-1622519407650-3df9883f76ce?w=1600&q=80'); }
+            85.69%, 100% { background-image: url('https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=1600&q=80'); }
         }
-        .button:hover, .slideshow__button:hover { background-color: var(--color-primario); transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        
+        .hero-banner::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.45); 
+        }
+        .hero-content { 
+            position: relative; z-index: 2; max-width: 800px; padding: 20px; 
+        }
+        .hero-content h1 { 
+            font-size: 2.8rem; font-weight: 800; margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero-content p { 
+            font-size: 1.2rem; margin: 15px 0 25px; font-weight: 300;
+        }
+        .button {
+            background: linear-gradient(135deg, var(--color-secundario), #1e5fa0);
+            color: var(--color-blanco); border: none;
+            padding: 12px 30px; font-size: 1rem; 
+            border-radius: 50px; text-transform: uppercase;
+            font-weight: 700; transition: all 0.3s; cursor: pointer; 
+            text-decoration: none; display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .button:hover { 
+            background: linear-gradient(135deg, #1e5fa0, var(--color-secundario));
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4); 
+        }
 
-        /* --- Banner Fabricantes --- */
-        .fabricantes-banner { background-color: var(--color-blanco); text-align: center; padding: 50px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
-        .fabricantes-banner h2 { font-size: 2.2rem; color: var(--color-primario); margin-bottom: 10px; }
-        .fabricantes-banner p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+        .fabricantes-banner { 
+            background: linear-gradient(135deg, #f0f4f8, #e1e8ed);
+            text-align: center; 
+            padding: 30px 20px; /* Padding vertical reducido */
+        }
+        .fabricantes-banner h2 { 
+            font-size: 1.8rem; color: var(--color-primario); margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .fabricantes-banner p { 
+            font-size: 1.1rem; max-width: 750px; margin: 0 auto; line-height: 1.6;
+            color: var(--color-texto);
+        }
 
-        /* --- Carrusel Horizontal --- */
-        .scrolling-wrapper { overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding-bottom: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        /* CARRUSELES - IMÁGENES MÁS VERTICALES Y LETRAS ESTILIZADAS */
+        .scrolling-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            padding-bottom: 15px; /* Padding reducido */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
         .scrolling-wrapper::-webkit-scrollbar { display: none; }
-        .scroll-item {
-            display: inline-block; background-color: var(--color-blanco); color: var(--color-primario);
-            border: 1px solid #ddd; border-radius: 10px; padding: 15px 25px; margin: 0 10px; font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;
+        .scroll-card {
+            display: inline-block;
+            width: 170px; 
+            margin: 0 6px; /* Margen reducido */
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid var(--color-borde-gris);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            vertical-align: top;
+            overflow: hidden;
+        }
+        .scroll-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 5px 15px rgba(13, 45, 98, 0.18);
+            border-color: var(--color-secundario);
+        }
+        /* NUEVO EFECTO HOVER PARA EL TÍTULO */
+        .scroll-card:hover .scroll-card__title {
+            color: var(--color-secundario);
+        }
+        .scroll-card img {
+            width: 100%;
+            height: 240px; /* IMAGEN AÚN MÁS VERTICAL */
+            object-fit: cover;
+            display: block;
+        }
+        .scroll-card__title {
+            font-weight: 600;
+            font-size: 0.8rem; 
+            padding: 8px 5px; 
+            white-space: normal;
+            line-height: 1.2;
+            color: var(--color-primario);
+            text-align: center;
+            transition: color 0.3s ease; /* Transición suave para el color */
+        }
+
+        /* GRID DE CATEGORÍAS - IMÁGENES Y TÍTULOS MÁS PEQUEÑOS */
+        .category-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; /* Espacio entre items reducido */
+        }
+        .category-grid__item { 
+            position: relative; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            text-decoration: none; 
+            aspect-ratio: 4 / 3;
+            transition: all 0.3s ease;
+        }
+        .category-grid__item:hover { 
+            transform: translateY(-7px);
+            box-shadow: 0 7px 22px rgba(13, 45, 98, 0.22);
+        }
+        .category-grid__item:hover img { transform: scale(1.08); }
+        .category-grid__item img { 
+            width: 100%; height: 100%; object-fit: cover; display: block; 
+            transition: transform 0.5s ease; 
+        }
+        .category-grid__item .overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; 
+            text-align: center;
+            background: linear-gradient(to top, rgba(13, 45, 98, 0.85), transparent);
+            padding: 25px 10px 15px; 
+            color: var(--color-blanco);
+        }
+        .category-grid__item h3 { 
+            margin: 0; 
+            font-size: 1.2rem; /* TAMAÑO DE SUBTÍTULO REDUCIDO */
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
         }
         
-        /* --- Mapa y Footer --- */
-        .map-container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
-        .map-info { flex: 1; min-width: 280px; }
-        .map-iframe { flex: 2; min-width: 280px; }
-        .map-iframe iframe { width: 100%; height: 350px; border:0; border-radius: 10px; }
-        .footer { background-color: var(--color-blanco); border-top: 1px solid #eee; padding-top: 40px; }
-        .footer__title { color: var(--color-primario); font-weight: bold; }
-        .footer__link-item:hover { color: var(--color-secundario); }
-        .footer__payment-logos img { max-height: 40px; margin: 5px; background: white; padding: 5px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        /* MAPA Y CONTACTO */
+        .map-container { 
+            display: flex; flex-wrap: wrap; gap: 30px; 
+            align-items: center; justify-content: center; 
+        }
+        .map-info { 
+            flex: 1; min-width: 300px; max-width: 500px; 
+            background: linear-gradient(135deg, #f0f4f8, #e1e8ed);
+            padding: 30px; border-radius: 15px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--color-secundario);
+        }
+        .map-info h3 { 
+            color: var(--color-primario); font-size: 1.8rem; 
+            margin-top: 0; margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .map-info p { 
+            margin-bottom: 10px; font-size: 1rem; line-height: 1.7; 
+        }
+        .map-info strong { 
+            color: var(--color-secundario);
+            font-weight: 600;
+        }
+        .map-iframe { 
+            flex: 2; min-width: 300px; max-width: 700px; 
+        }
+        .map-iframe iframe { 
+            width: 100%; height: 400px; border:0; 
+            border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+        }
         
-        .whatsapp-chat { position: fixed; bottom: 25px; right: 25px; z-index: 1000; width: 65px; height: 65px; transition: transform 0.3s; }
-        .whatsapp-chat:hover { transform: scale(1.1); }
+        /* FOOTER */
+        .footer { 
+            background: linear-gradient(135deg, var(--color-primario), #051a3d);
+            border-top: 3px solid var(--color-secundario); 
+            padding-top: 40px; 
+            color: #e0e0e0; 
+        }
+        .footer__wrapper { 
+            display: flex; justify-content: space-around; flex-wrap: wrap; 
+            gap: 30px; 
+        }
+        .footer__block-item { flex-basis: 250px; }
+        .footer__title { 
+            color: var(--color-blanco); font-weight: 700; font-size: 1.2rem; 
+            margin-bottom: 18px; 
+        }
+        .footer__linklist { 
+            list-style: none; padding: 0; margin: 0; 
+        }
+        .footer__linklist li { margin-bottom: 10px; }
+        .footer__link-item { 
+            color: #e0e0e0; text-decoration: none; transition: all 0.3s; font-size: 0.95rem;
+        }
+        .footer__link-item:hover { 
+            color: var(--color-secundario);
+            padding-left: 5px;
+        }
+        .footer__bottom-text { 
+            text-align: center; margin-top: 30px; 
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.15); 
+        }
+        .footer__payment-logos { 
+            display: flex; gap: 15px; flex-wrap: wrap;
+            align-items: center;
+        }
+        .footer__payment-logos img { 
+            height: 35px; width: auto;
+            filter: brightness(1.1);
+        }
 
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-chat {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(37, 211, 102, 0.7); }
+        }
+        
+        .whatsapp-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-chat img {
+            width: 35px;
+            height: 35px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .scroll-card { width: 160px; }
+            .scroll-card img { height: 200px; }
+        }
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; } .hero-content p { font-size: 1.1rem; }
-            .fabricantes-banner h2 { font-size: 1.8rem; }
+            .header-top__inner { flex-direction: column; align-items: stretch; }
+            .search-form { max-width: 100%; margin: 10px 0; }
+            .main-nav-bar__list { gap: 8px; }
+            .hero-banner { height: 350px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .category-grid { 
+                grid-template-columns: repeat(2, 1fr); /* Mantenemos 2 columnas para mejor visualización */
+                grid-template-rows: auto;
+            }
+            .header__brand-name { font-size: 1.6rem; }
+            .header__slogan { font-size: 0.75rem; }
+            .section__title { font-size: 1.5rem; }
+            .map-iframe iframe { height: 350px; }
+            .scroll-card { width: 150px; }
+            .scroll-card img { height: 190px; }
+        }
+        @media (max-width: 480px) {
+            .main-nav-bar__list { flex-direction: column; align-items: center; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .scroll-card { width: 140px; }
+            .scroll-card img { height: 180px; }
+            .category-grid { grid-template-columns: 1fr; } /* Una sola columna en móviles muy pequeños */
         }
     </style>
 </head>
-<body class="template-index">
+<body>
 
-    <header class="header header--inline" role="banner">
+    <header class="header-top">
         <div class="container">
-            <div class="header__inner">
-                <h1 class="header__logo">
-                    <a href="#" class="header__logo-link"><img class="header__logo-image" src="logo_mary.jpg" alt="Óptica Mary"></a>
-                </h1>
-                <nav class="nav-bar">
-                    <div class="nav-bar__inner">
-                        <ul class="nav-bar__linklist list--unstyled">
-                            <li class="nav-bar__item"><a href="#" class="nav-bar__link link">Inicio</a></li>
-                            <li class="nav-bar__item"><a href="#filtros" class="nav-bar__link link">Filtros</a></li>
-                            <li class="nav-bar__item"><a href="#lunas" class="nav-bar__link link">Lunas</a></li>
-                            <li class="nav-bar__item"><a href="https://opticamary.blogspot.com/" class="nav-bar__link link" target="_blank" rel="noopener">Blog</a></li>
-                            <li class="nav-bar__item"><a href="#contacto" class="nav-bar__link link">Contacto</a></li>
-                        </ul>
+            <div class="header-top__inner">
+                <div class="header__logo">
+                    <img src="https://res.cloudinary.com/dveuk1nve/image/upload/v1759427411/image-removebg-preview_16_n14dbb.png" alt="Logo Óptica Mary" class="header__logo-image">
+                    <div class="header__brand-text">
+                        <h1 class="header__brand-name">ÓPTICA MARY</h1>
+                        <p class="header__slogan">Precisión visual para una vida plena</p>
                     </div>
-                </nav>
+                </div>
+                
+                <form class="search-form" action="/search" method="get">
+                    <input type="text" name="q" class="search-input" placeholder="Buscar lentes, monturas...">
+                    <button type="submit" class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    </button>
+                </form>
+                
+                <div class="user-actions">
+                    <a href="/account/login">Iniciar Sesión</a>
+                    <a href="/cart">🛒 Carrito</a>
+                </div>
             </div>
         </div>
+
+        <nav class="main-nav-bar">
+            <div class="container">
+                <ul class="main-nav-bar__list">
+                    <li class="main-nav-bar__item"><a href="#main">Inicio</a></li>
+                    <li class="main-nav-bar__item"><a href="#categorias">Categorías</a></li>
+                    <li class="main-nav-bar__item"><a href="#filtros">Filtros</a></li>
+                    <li class="main-nav-bar__item"><a href="#lunas">Lunas</a></li>
+                    <li class="main-nav-bar__item"><a href="#marcas-internacionales">Marcas</a></li>
+                    <li class="main-nav-bar__item"><a href="#marcas-ejecutivas">Ejecutivas</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main id="main" role="main">
         
-        <section class="hero-banner" style="background-image: url('https://images.unsplash.com/photo-1574258483424-f7b53a5e8a11?q=80&w=2070&auto=format&fit=crop');">
+        <section class="hero-banner">
             <div class="hero-content">
                 <h1>Tu Estilo, Tu Visión Perfecta</h1>
-                <p>Descubre monturas únicas que reflejan tu personalidad. Calidad y diseño a tu alcance.</p>
+                <p>Descubre monturas únicas que reflejan tu personalidad</p>
                 <a href="https://api.whatsapp.com/send?phone=51935511702&text=%C2%A1Hola!%20Quisiera%20asesor%C3%ADa%20para%20elegir%20mis%20lentes." class="button" target="_blank" rel="noopener">Pide Asesoría por WhatsApp</a>
             </div>
         </section>
@@ -123,44 +534,206 @@
             </div>
         </section>
         
-        <section id="filtros" class="section">
-            <div class="container">
-                <header class="section__header"><h2 class="section__title heading h3">Nuestros Filtros y Tratamientos</h2></header>
-                <div class="scrolling-wrapper" id="filtros-scroller">
-                    <div class="scroll-item">Antirreflejo</div>
-                    <div class="scroll-item">Filtro de Luz Azul</div>
-                    <div class="scroll-item">Protección UV</div>
-                    <div class="scroll-item">Fotocromático</div>
-                    <div class="scroll-item">Polarizado</div>
-                    <div class="scroll-item">Antirrayas</div>
-                </div>
-            </div>
-        </section>
+        <hr class="section-divider">
 
-        <section id="lunas" class="section">
+        <section id="categorias" class="section">
             <div class="container">
-                <header class="section__header"><h2 class="section__title heading h3">Tipos de Lunas</h2></header>
-                <div class="scrolling-wrapper" id="lunas-scroller">
-                    <div class="scroll-item">Resina CR-39</div>
-                    <div class="scroll-item">Policarbonato</div>
-                    <div class="scroll-item">Alto Índice (1.67, 1.74)</div>
-                    <div class="scroll-item">Futurex / Trivex</div>
+                 <header class="section__header">
+                    <h2 class="section__title">Nuestras Categorías</h2>
+                </header>
+                <div class="category-grid">
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1610398612478-43b6a0a00e5a?w=800&q=80" alt="Lentes para Hombre">
+                        <div class="overlay"><h3>Hombre</h3></div>
+                    </a>
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1590212151088-e04a39103c8b?w=800&q=80" alt="Lentes para Mujer">
+                        <div class="overlay"><h3>Mujer</h3></div>
+                    </a>
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1519735777077-ec97162dc266?w=800&q=80" alt="Lentes para Niños">
+                        <div class="overlay"><h3>Niños</h3></div>
+                    </a>
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1577803645773-f124155b4b3b?w=800&q=80" alt="Lentes Solares">
+                        <div class="overlay"><h3>Solares</h3></div>
+                    </a>
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800&q=80" alt="Lentes Deportivos">
+                        <div class="overlay"><h3>Deportivos</h3></div>
+                    </a>
+                    <a href="#" class="category-grid__item">
+                        <img src="https://images.unsplash.com/photo-1622519407650-3df9883f76ce?w=800&q=80" alt="Lentes Multifocales">
+                        <div class="overlay"><h3>Multifocales</h3></div>
+                    </a>
                 </div>
             </div>
         </section>
         
-        <section class="section">
+        <hr class="section-divider">
+
+        <section id="filtros" class="section">
             <div class="container">
-                <header class="section__header"><h2 class="section__title heading h3">Visita Nuestra Tienda</h2></header>
+                <header class="section__header">
+                    <h2 class="section__title">Filtros y Tratamientos</h2>
+                </header>
+                <div class="scrolling-wrapper" id="filtros-scroller">
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1556306535-0f09a537f0a3?w=400&h=600&fit=crop&q=80" alt="Antirreflejo">
+                        <div class="scroll-card__title">Antirreflejo</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1565689157206-0fddef7589a2?w=400&h=600&fit=crop&q=80" alt="Filtro Azul">
+                        <div class="scroll-card__title">Filtro Luz Azul</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=400&h=600&fit=crop&q=80" alt="Protección UV">
+                        <div class="scroll-card__title">Protección UV</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=600&fit=crop&q=80" alt="Fotocromático">
+                        <div class="scroll-card__title">Fotocromático</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=600&fit=crop&q=80" alt="Polarizado">
+                        <div class="scroll-card__title">Polarizado</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1576171276420-6b7ce0580021?w=400&h=600&fit=crop&q=80" alt="Antirrayas">
+                        <div class="scroll-card__title">Antirrayas</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="lunas" class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Tipos de Lunas</h2>
+                </header>
+                <div class="scrolling-wrapper" id="lunas-scroller">
+                     <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=600&fit=crop&q=80" alt="Cristal Mineral">
+                        <div class="scroll-card__title">Cristal Mineral</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1574256233223-c0c76a2f1d9f?w=400&h=600&fit=crop&q=80" alt="Orgánico CR-39">
+                        <div class="scroll-card__title">Orgánico CR-39</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1614098735168-4e2c5e97b553?w=400&h=600&fit=crop&q=80" alt="Policarbonato">
+                        <div class="scroll-card__title">Policarbonato</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=600&fit=crop&q=80" alt="Trivex">
+                        <div class="scroll-card__title">Trivex</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1622519407650-3df9883f76ce?w=400&h=600&fit=crop&q=80" alt="Alto Índice 1.60">
+                        <div class="scroll-card__title">Alto Índice 1.60</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1608050237157-bb97f0d1365c?w=400&h=600&fit=crop&q=80" alt="Alto Índice 1.67">
+                        <div class="scroll-card__title">Alto Índice 1.67</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1629198555582-aadf980d0e6b?w=400&h=600&fit=crop&q=80" alt="Alto Índice 1.74">
+                        <div class="scroll-card__title">Alto Índice 1.74</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="marcas-internacionales" class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Marcas Internacionales</h2>
+                </header>
+                <div class="scrolling-wrapper" id="marcas-int-scroller">
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=600&fit=crop&q=80" alt="Ray-Ban">
+                        <div class="scroll-card__title">Ray-Ban</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=400&h=600&fit=crop&q=80" alt="Oakley">
+                        <div class="scroll-card__title">Oakley</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?w=400&h=600&fit=crop&q=80" alt="Gucci">
+                        <div class="scroll-card__title">Gucci</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1609010697446-11f2155278f0?w=400&h=600&fit=crop&q=80" alt="Prada">
+                        <div class="scroll-card__title">Prada</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&h=600&fit=crop&q=80" alt="Persol">
+                        <div class="scroll-card__title">Persol</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1580836432810-0b8c7832e1e3?w=400&h=600&fit=crop&q=80" alt="Tom Ford">
+                        <div class="scroll-card__title">Tom Ford</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="marcas-ejecutivas" class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Marcas Ejecutivas</h2>
+                </header>
+                <div class="scrolling-wrapper" id="marcas-eje-scroller">
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1577803645773-f124155b4b3b?w=400&h=600&fit=crop&q=80" alt="D&G">
+                        <div class="scroll-card__title">D&G</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1601005834188-7e0a4100cf1a?w=400&h=600&fit=crop&q=80" alt="Versace">
+                        <div class="scroll-card__title">Versace</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?w=400&h=600&fit=crop&q=80" alt="Armani">
+                        <div class="scroll-card__title">Armani</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1586020963602-b3f5466cfa0a?w=400&h=600&fit=crop&q=80" alt="Tommy Hilfiger">
+                        <div class="scroll-card__title">Tommy Hilfiger</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1590212151088-e04a39103c8b?w=400&h=600&fit=crop&q=80" alt="Vogue">
+                        <div class="scroll-card__title">Vogue</div>
+                    </a>
+                    <a href="#" class="scroll-card">
+                        <img src="https://images.unsplash.com/photo-1595726121162-ae3cfbf5d3b1?w=400&h=600&fit=crop&q=80" alt="Arnette">
+                        <div class="scroll-card__title">Arnette</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="section-divider">
+
+        <section id="ubicacion" class="section">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Nuestra Ubicación</h2>
+                </header>
                 <div class="map-container">
                     <div class="map-info">
                         <h3>Óptica Mary - Los Olivos</h3>
                         <p><strong>Dirección:</strong> Av. Carlos Izaguirre 693, Los Olivos, Lima, Perú</p>
                         <p><strong>Horario:</strong> Lunes a Sábado de 10:00 am a 7:30 pm</p>
-                        <p>¡Te esperamos!</p>
+                        <p>¡Te esperamos para ofrecerte la mejor asesoría!</p>
                     </div>
                     <div class="map-iframe">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.435756475653!2d-77.0601833!3d-11.9483324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d15a5f5f5f5f%3A0x6e2f5f5f5f5f5f5f!2sAv.%20Carlos%20Izaguirre%20693%2C%20Los%20Olivos%2015301%2C%20Per%C3%BA!5e0!3m2!1ses-419!2ses!4v1696262000000!5m2!1ses-419!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.9774395679543!2d-77.06013688582093!3d-11.979040342269263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d1522f1c1f7b%3A0xf6d90a8a614d0216!2sAv.%20Carlos%20Izaguirre%20693%2C%20Los%20Olivos%2015302!5e0!3m2!1ses-419!2spe!4v1678888888888!5m2!1ses-419!2spe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -171,68 +744,91 @@
     <footer id="contacto" class="footer" role="contentinfo">
         <div class="container">
             <div class="footer__wrapper">
-                <div class="footer__block-list">
-                    <div class="footer__block-item footer__block-item--links">
-                        <h2 class="footer__title heading h6">Menú</h2>
-                        <ul class="footer__linklist list--unstyled">
-                            <li><a href="#" class="footer__link-item link">Inicio</a></li>
-                            <li><a href="#filtros" class="footer__link-item link">Filtros</a></li>
-                            <li><a href="#lunas" class="footer__link-item link">Lunas</a></li>
-                            <li><a href="https://opticamary.blogspot.com/" class="footer__link-item link" target="_blank" rel="noopener">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__block-item footer__block-item--text">
-                        <h2 class="footer__title heading h6">Atención al Cliente</h2>
-                        <div class="rte">
-                            <p><strong>WhatsApp 1:</strong> (+51) 935 511 702</p>
-                            <p><strong>WhatsApp 2:</strong> (+51) 935 511 701</p>
-                            <p><strong>Horario:</strong> L-S de 10am a 7:30pm</p>
-                            <p><strong>Email:</strong> contacto@opticamary.com</p>
-                        </div>
-                    </div>
-                    <div class="footer__block-item">
-                         <h2 class="footer__title heading h6">Aceptamos</h2>
-                         <div class="footer__payment-logos">
-                            <img src="https://cdn.worldvectorlogo.com/logos/yape.svg" alt="Yape">
-                            <img src="https://logotipoz.com/wp-content/uploads/2021/10/plin-logo-vector.svg" alt="Plin">
-                            <img src="https://seeklogo.com/images/B/bcp-logo-651E895022-seeklogo.com.png" alt="BCP">
-                            <img src="https://seeklogo.com/images/B/bbva-logo-284734323A-seeklogo.com.png" alt="BBVA">
-                         </div>
+                <div class="footer__block-item footer__block-item--links">
+                    <h2 class="footer__title heading h6">Menú</h2>
+                    <ul class="footer__linklist list--unstyled">
+                        <li><a href="#main" class="footer__link-item link">Inicio</a></li>
+                        <li><a href="#categorias" class="footer__link-item link">Categorías</a></li>
+                        <li><a href="#filtros" class="footer__link-item link">Filtros</a></li>
+                        <li><a href="#lunas" class="footer__link-item link">Lunas</a></li>
+                        <li><a href="#marcas-internacionales" class="footer__link-item link">Marcas</a></li>
+                    </ul>
+                </div>
+                <div class="footer__block-item footer__block-item--text">
+                    <h2 class="footer__title heading h6">Atención al Cliente</h2>
+                    <div class="rte">
+                        <p><strong>WhatsApp 1:</strong> (+51) 935 511 702</p>
+                        <p><strong>WhatsApp 2:</strong> (+51) 935 511 701</p>
+                        <p><strong>Horario:</strong> L-S de 10am a 7:30pm</p>
+                        <p><strong>Email:</strong> contacto@opticamary.com</p>
                     </div>
                 </div>
+                <div class="footer__block-item">
+                     <h2 class="footer__title heading h6">Aceptamos</h2>
+                     <div class="footer__payment-logos">
+                        <img src="https://cdn.worldvectorlogo.com/logos/yape.svg" alt="Yape">
+                        <img src="https://logotipoz.com/wp-content/uploads/2021/10/plin-logo-vector.svg" alt="Plin">
+                        <img src="https://seeklogo.com/images/B/bcp-logo-651E895022-seeklogo.com.png" alt="BCP">
+                        <img src="https://seeklogo.com/images/B/bbva-logo-284734323A-seeklogo.com.png" alt="BBVA">
+                     </div>
+                </div>
             </div>
-            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #ddd; margin-top: 20px;">
+            <div class="footer__bottom-text">
                 <p>© 2025 Óptica Mary. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <a href="https://api.whatsapp.com/send?phone=51935511702&text=%C2%A1Hola!%20Quisiera%20asesor%C3%ADa%20o%20realizar%20una%20compra." target="_blank" rel="noopener">
-        <img class="whatsapp-chat" src="https://leoptica.com/cdn/shop/files/whatsapp-leoptica.png" alt="Chatea con nosotros en WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=51935511702&text=%C2%A1Hola!%20Quisiera%20asesor%C3%ADa%20o%20realizar%20una%20compra." target="_blank" rel="noopener" class="whatsapp-chat">
+        <img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-2iihd8bg.png" alt="Chatea con nosotros en WhatsApp">
     </a>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            function autoScroll(elementId, speed = 1) {
+            function autoScroll(elementId, speed = 0.5) {
                 const scroller = document.getElementById(elementId);
                 if (!scroller) return;
 
                 let isHovering = false;
                 scroller.addEventListener('mouseenter', () => isHovering = true);
                 scroller.addEventListener('mouseleave', () => isHovering = false);
+                scroller.addEventListener('touchstart', () => isHovering = true, { passive: true });
+                scroller.addEventListener('touchend', () => isHovering = false);
 
-                setInterval(function() {
-                    if (isHovering) return; // Pausa el scroll si el mouse está encima
-                    if (scroller.scrollLeft < (scroller.scrollWidth - scroller.clientWidth)) {
+                let scrollAmount = 0;
+                let isScrolling = false;
+
+                function scroll() {
+                    if(!isScrolling) return;
+
+                    if (!isHovering && scroller.scrollWidth > scroller.clientWidth) {
                         scroller.scrollLeft += speed;
-                    } else {
-                        scroller.scrollLeft = 0; // Vuelve al inicio para un bucle infinito
+                        if (scroller.scrollLeft >= scroller.scrollWidth / 2) {
+                           scroller.scrollLeft = 0;
+                        }
                     }
-                }, 40); // Intervalo de tiempo para la suavidad del scroll
+                    requestAnimationFrame(scroll);
+                }
+                
+                function setupClones() {
+                    if (scroller.scrollWidth <= scroller.clientWidth) return;
+                    
+                    const children = Array.from(scroller.children);
+                    children.forEach(child => {
+                        scroller.appendChild(child.cloneNode(true));
+                    });
+                    isScrolling = true;
+                    scroll();
+                }
+                
+                // Use a small timeout to allow images to load and calculate correct width
+                setTimeout(setupClones, 1000);
             }
 
             autoScroll('filtros-scroller');
             autoScroll('lunas-scroller');
+            autoScroll('marcas-int-scroller');
+            autoScroll('marcas-eje-scroller');
         });
     </script>
 
